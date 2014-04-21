@@ -159,12 +159,12 @@ function fminbox{T}(func::Function, x::Array{T}, l::Array{T}, u::Array{T}, ops::
         if display > 0
             println("#### Calling optimizer with mu = ", mu, " ####")
         end
-        try
-            x, fval, fcount, converged = optimizer(funcc, x, ops)
-        catch
-            warn(string("Encountered an error in optimizing with mu = ", mu, ", returning previous result"))
-            return xold, fval_all, fcount_all, converged
-        end
+        # try
+        x, fval, fcount, converged = optimizer(funcc, x, ops)
+        # catch e
+            # warn(string("Encountered an error in optimizing with mu = ", mu, ", returning previous result"))
+            # return xold, fval_all, fcount_all, converged
+        # end
         if display & PARAMETERS_MU > 0
             println("x: ", x)
         end
